@@ -1,37 +1,31 @@
 <template>
-  <div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
-    <sidebar class="sidebar-container"></sidebar>
-    <div class="main-container">
-      <navbar></navbar>
+  <el-container class="jk-container">
+    <el-aside class="jk-aside" width="20.8333%">
+      <sidebar></sidebar>
+    </el-aside>
+    <el-main>
       <app-main></app-main>
-    </div>
-  </div>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
-  import { Navbar, Sidebar, AppMain } from './components'
+  import { Sidebar, AppMain } from './components'
 
   export default {
     name: 'layout',
     components: {
-      Navbar,
       Sidebar,
       AppMain
-    },
-    computed: {
-      sidebar() {
-        return this.$store.state.app.sidebar
-      }
     }
   }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   @import "src/styles/mixin.scss";
-  .app-wrapper {
+  .jk-container {
     @include clearfix;
     position: relative;
     height: 100%;
-    width: 100%;
   }
 </style>
