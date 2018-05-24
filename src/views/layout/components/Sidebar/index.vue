@@ -1,6 +1,7 @@
 <template>
   <scroll-bar>
-    <div class="backTop"></div>
+    <div class="backTop">
+    </div>
     <div class="backBottom">
       <div class="avatar"><img :src="'static' + formData.avatar" alt=""></div>
       <div class="blockBox"></div>
@@ -19,7 +20,7 @@
       </el-menu>
       <div class="btContain">
         <el-button class="toGit" size="medium" round>GitHub</el-button>
-        <div class="email">邮箱: {{userInfo.email}}</div>
+        <div class="email">EMAIL: {{userInfo.email}}</div>
       </div>
     </div>
 
@@ -84,6 +85,12 @@ export default {
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 
+  .hamburger-container {
+    line-height: 58px;
+    height: 50px;
+    float: left;
+    padding: 0 10px;
+  }
   .backTop{
     width: 100%;
     height: 20%;
@@ -121,13 +128,15 @@ export default {
   .sysName{
     display: inline-block;
     padding: 5px 30px;
-    background-color: #666666;
+    background-color: #4d4d4d;
     color: #ffffff;
-    font-size: 28px;
+    font-weight: 700;
+    font-size: 36px;
   }
   .motto{
     margin-top: 30px;
     margin-bottom: 30px;
+    font-size: 14px;
   }
   .btContain{
     position: absolute;
@@ -140,10 +149,16 @@ export default {
       background-color: transparent;
       margin-bottom: 10px;
       margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: 500;
       &:hover{
         background-color: rgb(252, 100, 35);
         color: #fff;
       }
     }
+  }
+  .email{
+    color: #333333;
+    font-size: 14px;
   }
 </style>

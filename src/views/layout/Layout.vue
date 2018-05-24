@@ -1,22 +1,42 @@
 <template>
-  <el-container class="jk-container">
-    <el-aside class="jk-aside" width="20.8333%">
+  <el-container class="jk-container" :class="{hideSidebar:!sidebar.opened}">
+    <el-aside class="jk-aside" width="21%">
       <sidebar></sidebar>
     </el-aside>
-    <el-main>
-      <app-main></app-main>
+    <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
+    <el-main class="jk-main">
+      <app-main  class="jk-main-container"></app-main>
     </el-main>
   </el-container>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import { Sidebar, AppMain } from './components'
+  import Hamburger from '@/components/Hamburger'
 
   export default {
     name: 'layout',
     components: {
       Sidebar,
-      AppMain
+      AppMain,
+      Hamburger
+    },
+    methods: {
+      toggleSideBar() {
+        this.$store.dispatch('toggleSideBar')
+      }
+    },
+    computed: {
+      sidebar() {
+        return this.$store.state.app.sidebar
+      },
+      ...mapGetters([
+        'sidebar'
+      ]),
+      isCollapse() {
+        return !this.sidebar.opened
+      }
     }
   }
 </script>
@@ -27,5 +47,9 @@
     @include clearfix;
     position: relative;
     height: 100%;
+  }
+  .jk-main{
+    height: fit-content;
+    background-color: #efefef;
   }
 </style>

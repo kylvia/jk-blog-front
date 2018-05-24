@@ -30,6 +30,7 @@ export default {
 
 <style scoped>
 .hamburger {
+  position: absolute;
   display: inline-block;
   cursor: pointer;
   width: 20px;
@@ -37,6 +38,9 @@ export default {
   transform: rotate(90deg);
   transition: .38s;
   transform-origin: 50% 50%;
+  z-index: 99999;
+  left: 19%;
+  top: 28px;
 }
 
 .hamburger.is-active {

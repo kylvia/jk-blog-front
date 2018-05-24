@@ -193,3 +193,12 @@ code {
 .multiselect--active {
   z-index: 1000 !important;
 }
+.el-pagination.is-background .el-pager li:not(.disabled).active{
+  background-color: #fc6423 !important;
+  &:hover{
+    color: #fff !important;
+  }
+}
+.el-pagination.is-background .el-pager li:not(.disabled):hover {
+  color: #fc6423 !important;
+}

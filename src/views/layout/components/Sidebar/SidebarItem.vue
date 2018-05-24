@@ -6,7 +6,7 @@
                             :key="item.name">
         <el-menu-item :index="item.path" :class="{'submenu-title-noDropdown':!isNest}">
           <svg-icon class="listIcon" v-if="item.meta&&item.meta.icon" :icon-class="item.meta.icon"></svg-icon>
-          <span v-if="item.meta&&item.meta.title" slot="title">{{item.meta.title}}</span>
+          <span class="navTxt" v-if="item.meta&&item.meta.title" slot="title">{{item.meta.title}}</span>
         </el-menu-item>
       </router-link>
 
@@ -38,9 +38,15 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   @import "src/styles/mixin.scss";
+  .menu-wrapper{
+    color: #666;
+  }
   .listIcon {
     font-size: 18px;
     margin-right: 5px;
+  }
+  .navTxt{
+    font-size: 16px;
   }
   .menu-wrapper{
     width: 100%;
