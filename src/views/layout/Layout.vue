@@ -49,6 +49,8 @@
     height: 100%;
   }
   .jk-main{
+
+    position: relative;
     height: fit-content;
     background-color: #efefef;
   }

@@ -16,7 +16,16 @@ export const routerMap = [
       path: '/index',
       component: _import('articleList/index'),
       name: 'index',
-      meta: { title: '目录一', icon: 'home', noCache: true }
+      meta: { title: '目录一', icon: 'home', noCache: true },
+      children: [{
+        path: '',
+        component: _import('articleList/list'),
+        name: 'list'
+      }, {
+        path: 'detail/:id',
+        component: _import('articleList/detail'),
+        name: 'detail'
+      }]
     }, {
       path: '/about',
       component: _import('about/index'),

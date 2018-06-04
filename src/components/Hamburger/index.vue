@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 .hamburger {
-  position: absolute;
+  position: fixed;
   display: inline-block;
   cursor: pointer;
   width: 20px;

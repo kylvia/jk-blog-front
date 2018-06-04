@@ -11,13 +11,7 @@
 
 <script>
   export default {
-    name: 'AppMain',
-    data() {
-      console.log('appMain')
-      return {
-        msg: 'appMain'
-      }
-    }
+    name: 'AppMain'
   }
 </script>
 
