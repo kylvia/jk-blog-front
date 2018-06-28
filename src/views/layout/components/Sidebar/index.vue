@@ -50,7 +50,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'sidebar'
+      'sidebar',
+      'info'
     ]),
     isCollapse() {
       return !this.sidebar.opened
@@ -65,6 +66,7 @@ export default {
     }).then(function(res) {
       const resData = res.data
       if (resData.code === 100) {
+        that.$store.dispatch('setInfo', resData.data)
         const avatear = resData.data.avater
         resData.data.avatar = avatear
         that.formData = resData.data
@@ -108,7 +110,7 @@ export default {
   }
   .avatar{
     position: absolute;
-    left: 140px;
+    left: calc(50% - 60px);
     top:-90px;
     width: 120px;
     height: 120px;

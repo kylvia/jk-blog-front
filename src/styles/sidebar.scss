@@ -4,6 +4,7 @@
     min-height: 100%;
     transition: margin-left .28s;
     margin-left: 21%;
+    margin-top: 0px;
   }
   // 侧边栏
   .jk-aside {
@@ -29,21 +30,32 @@
       width: 100% !important;
     }
   }
+  .topNav {
+    position: fixed;
+    display: none;
+    left: 11%;
+    top: -20px;
+    background-color: #efefef;
+    z-index: 999;
+  }
   .hideSidebar {
     .jk-aside {
+      min-width: 0px;
       width: 0px !important;
     }
     .jk-main {
       //margin-left: 36px;
       margin-left: 0;
+      margin-top: 52px;
     }
     .jk-main-container{
 
       margin:0 auto;
-      width: 78%;
+      width: 1365px;
     }
     .hamburger {
-      left: 10%;
+      left: 14%;
+      top:27px;
     }
     .submenu-title-noDropdown {
       padding-left: 10px !important;
@@ -66,6 +78,29 @@
           display: none;
         }
       }
+    }
+    .topNav {
+
+      display: block;
+      margin:0 auto;
+      width: 1365px;
+      height: 92px;
+      left: calc(50% - 683px);
+      .el-menu{
+        width: auto;
+        float: right;
+        border: none;
+        margin-top: 20px;
+      }
+      .el-menu-item{
+        border: none!important;
+        &:hover, &:focus{
+          background-color: transparent!important;
+        }
+      }
+    }
+    .hamburger{
+      left: calc(50% - 660px);
     }
   }
   .nest-menu .el-submenu>.el-submenu__title,
@@ -80,12 +115,12 @@
     min-width: 180px !important;
   }
 }
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1365px) {
   #app {
     // 主体区域
-    .jk-aside {
+    /*.jk-aside {
       width: 0px !important;
-    }
+    }*/
     .jk-main {
       //margin-left: 36px;
       margin-left: 0;
@@ -93,10 +128,7 @@
     .jk-main-container{
 
       margin:0 auto;
-      width: 78%;
-    }
-    .hamburger {
-      left: 10%;
+      width: 100%;
     }
     .submenu-title-noDropdown {
       padding-left: 10px !important;
@@ -119,6 +151,41 @@
           display: none;
         }
       }
+    }
+
+    .jk-aside{
+      min-width: 250px;
+      box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.4);
+    }
+    .hideSidebar{
+
+      .jk-main-container{
+
+        margin:0 auto;
+        width: 100%;
+      }
+      .jk-aside {
+        min-width: 0px;
+        width: 0px !important;
+      }
+
+      .hamburger {
+        left: 200px;
+      }
+      .topNav{
+        width: 98%;
+        left: 1%;
+      }
+      .hamburger{
+        left: 2%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1365px) {
+  #app{
+    .hamburger {
+      left: 220px;
     }
   }
 }

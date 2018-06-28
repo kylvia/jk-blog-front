@@ -40,7 +40,7 @@ export default {
   transform-origin: 50% 50%;
   z-index: 99999;
   left: 19%;
-  top: 28px;
+  top: 47px;
 }
 
 .hamburger.is-active {

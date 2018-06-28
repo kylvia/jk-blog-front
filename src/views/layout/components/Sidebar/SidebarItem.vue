@@ -1,5 +1,6 @@
 <template>
   <div class="menu-wrapper">
+
     <template v-for="item in routes[0].children" >
 
       <router-link :to="item.path"
@@ -28,7 +29,6 @@ export default {
     }
   },
   data() {
-    console.log('SidebarItem.vue')
     return {
       msg: 'SidebarItem'
     }

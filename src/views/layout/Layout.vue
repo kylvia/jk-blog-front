@@ -5,6 +5,9 @@
     </el-aside>
     <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
     <el-main class="jk-main">
+      <nav class="topNav">
+        <navbar></navbar>
+      </nav>
       <app-main  class="jk-main-container"></app-main>
     </el-main>
   </el-container>
@@ -12,7 +15,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import { Sidebar, AppMain } from './components'
+  import { Sidebar, AppMain, Navbar } from './components'
   import Hamburger from '@/components/Hamburger'
 
   export default {
@@ -20,6 +23,7 @@
     components: {
       Sidebar,
       AppMain,
+      Navbar,
       Hamburger
     },
     methods: {
@@ -53,5 +57,8 @@
     position: relative;
     height: fit-content;
     background-color: #efefef;
+  }
+  .topNav{
+
   }
 </style>

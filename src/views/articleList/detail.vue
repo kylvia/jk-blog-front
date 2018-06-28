@@ -1,7 +1,7 @@
 <template>
     <section class="detailMain">
       <div class="grid-title">
-        <h3 class="articleTit"><div class="article-type" :class="'type'+details.articleType">{{details.articleType | typeFilter}}</div>{{details.title}}</h3>
+        <h3 class="articleTit" @click="$router.back(-1)"><div class="article-type" :class="'type'+details.articleType">{{details.articleType | typeFilter}}</div>{{details.title}}</h3>
         <div class="rows">
           <svg-icon class="listIcon" iconClass="rili"></svg-icon>{{details.timestamp | parseTime('{y}-{m}-{d} {h}:{i}')}}&nbsp;<span class="split">|</span>
           <svg-icon class="listIcon" iconClass="fenlei"></svg-icon>{{details.classesLabel}}&nbsp;<span class="split">|</span>

@@ -20,7 +20,8 @@ export const routerMap = [
       children: [{
         path: '',
         component: _import('articleList/list'),
-        name: 'list'
+        name: 'list',
+        meta: { keepAlive: true }
       }, {
         path: 'detail/:id',
         component: _import('articleList/detail'),
@@ -30,12 +31,12 @@ export const routerMap = [
       path: '/about',
       component: _import('about/index'),
       name: 'about',
-      meta: { title: '目录二', icon: 'aboutMe', noCache: true }
+      meta: { title: '目录二', icon: 'aboutMe', noCache: true, keepAlive: true }
     }, {
       path: '/classes',
       component: _import('classes/index'),
       name: 'classes',
-      meta: { title: '目录三', icon: 'classes', noCache: true }
+      meta: { title: '目录三', icon: 'classes', noCache: true, keepAlive: true }
     }]
   }
   /* {
@@ -45,6 +46,17 @@ export const routerMap = [
   }*/
 ]
 export default new Router({
-  routes: routerMap
+  mode: 'history',
+  routes: routerMap,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      if (from.meta.keepAlive) {
+        from.meta.savedPosition = document.body.scrollTop
+      }
+      return { x: 0, y: to.meta.savedPosition || 0 }
+    }
+  }
 })
 
