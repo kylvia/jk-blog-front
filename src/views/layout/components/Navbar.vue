@@ -51,7 +51,6 @@
     },
     computed: {
       ...mapGetters([
-        'sidebar',
         'name',
         'avatar',
         'sidebar'

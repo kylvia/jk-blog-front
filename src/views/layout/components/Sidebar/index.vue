@@ -67,8 +67,6 @@ export default {
       const resData = res.data
       if (resData.code === 100) {
         that.$store.dispatch('setInfo', resData.data)
-        const avatear = resData.data.avater
-        resData.data.avatar = avatear
         that.formData = resData.data
       }
     })
