@@ -202,3 +202,16 @@ code {
 .el-pagination.is-background .el-pager li:not(.disabled):hover {
   color: #fc6423 !important;
 }
+
+
+.imgWin.el-dialog{
+  margin-top: 0;
+  background: transparent;
+  .el-dialog__header{
+    padding: 0;
+  }
+  .el-dialog__body{
+    padding: 0;
+    line-height: 0;
+  }
+}

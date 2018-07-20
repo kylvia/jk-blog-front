@@ -16,7 +16,7 @@ export const routerMap = [
       path: '/index',
       component: _import('articleList/index'),
       name: 'index',
-      meta: { title: '目录一', icon: 'home', noCache: true },
+      meta: { title: '首页', icon: 'home', noCache: true },
       children: [{
         path: '',
         component: _import('articleList/list'),
@@ -28,15 +28,20 @@ export const routerMap = [
         name: 'detail'
       }]
     }, {
-      path: '/about',
-      component: _import('about/index'),
-      name: 'about',
-      meta: { title: '目录二', icon: 'aboutMe', noCache: true, keepAlive: true }
-    }, {
       path: '/classes',
       component: _import('classes/index'),
       name: 'classes',
-      meta: { title: '目录三', icon: 'classes', noCache: true, keepAlive: true }
+      meta: { title: '分类', icon: 'classes', noCache: true, keepAlive: true }
+    }, {
+      path: '/photos',
+      component: _import('photos/index'),
+      name: 'photos',
+      meta: { title: '相册', icon: 'photos', noCache: true, keepAlive: true }
+    }, {
+      path: '/about',
+      component: _import('about/index'),
+      name: 'about',
+      meta: { title: '关于', icon: 'aboutMe', noCache: true, keepAlive: true }
     }]
   }
   /* {

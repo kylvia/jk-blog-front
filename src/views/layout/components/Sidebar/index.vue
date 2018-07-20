@@ -3,7 +3,8 @@
     <div class="backTop">
     </div>
     <div class="backBottom">
-      <div class="avatar"><img :src="'static' + formData.avatar" alt=""></div>
+      <!--<div class="avatar"><img :src="'static' + formData.avatar" alt=""></div>-->
+      <div class="avatar"><div class="avatarImg"><img :src="formData.avatar" alt=""></div></div>
       <div class="blockBox"></div>
       <div class="sysName">{{formData.sysName}}</div>
       <div class="motto">{{formData.motto}}</div>
@@ -19,7 +20,7 @@
         <sidebar-item :routes="routers"></sidebar-item>
       </el-menu>
       <div class="btContain">
-        <el-button class="toGit" size="medium" round>GitHub</el-button>
+        <a target="_blank" href="https://github.com/kylvia" ><el-button class="toGit" size="medium" round>GitHub</el-button></a>
         <div class="email">EMAIL: {{userInfo.email}}</div>
       </div>
     </div>
@@ -109,12 +110,20 @@ export default {
   .avatar{
     position: absolute;
     left: calc(50% - 60px);
-    top:-90px;
-    width: 120px;
-    height: 120px;
+    top:-100px;
+    width: 140px;
+    height: 140px;
+    padding:5px;
     z-index: 9;
     border-radius: 50%;
     overflow: hidden;
+    background-color: #fff;
+    .avatarImg{
+      border-radius: 50%;
+      width: 130px;
+      height: 130px;
+      overflow: hidden;
+    }
     img{
       display: block;
       width: 100%;
@@ -134,9 +143,10 @@ export default {
     font-size: 36px;
   }
   .motto{
-    margin-top: 30px;
+    margin-top: 40px;
     margin-bottom: 30px;
     font-size: 14px;
+    color: #999;
   }
   .btContain{
     position: absolute;

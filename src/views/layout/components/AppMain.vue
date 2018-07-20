@@ -17,6 +17,7 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .app-main{
+    position: relative;
     background-color: #ffffff;
   }
 </style>

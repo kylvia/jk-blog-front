@@ -1,9 +1,10 @@
 <template>
     <section class="detailMain">
       <div class="grid-title">
-        <h3 class="articleTit" @click="$router.back(-1)"><div class="article-type" :class="'type'+details.articleType">{{details.articleType | typeFilter}}</div>{{details.title}}</h3>
+        <i class="el-icon-back backBtn" @click="$router.back(-1)"></i>
+        <h3 class="articleTit"><div class="article-type" :class="'type'+details.articleType">{{details.articleType | typeFilter}}</div>{{details.title}}</h3>
         <div class="rows">
-          <svg-icon class="listIcon" iconClass="rili"></svg-icon>{{details.timestamp | parseTime('{y}-{m}-{d} {h}:{i}')}}&nbsp;<span class="split">|</span>
+          <svg-icon class="listIcon" iconClass="rili"></svg-icon>{{details.display_time | parseTime('{y}-{m}-{d} {h}:{i}')}}&nbsp;<span class="split">|</span>
           <svg-icon class="listIcon" iconClass="fenlei"></svg-icon>{{details.classesLabel}}&nbsp;<span class="split">|</span>
           <svg-icon class="listIcon" iconClass="ydl"></svg-icon>{{details.pageviews}}&nbsp;
         </div>
@@ -12,8 +13,9 @@
           <div v-html='details.content'></div>
         </div>
       </div>
-      <div>
+      <div class="messageContent">
         <div class="message">
+          <p class="messageTit">留言板：</p>
           <v-input v-model="username"></v-input>
           <v-textarea v-model="message" ref="message"></v-textarea>
           <div class="btn-con">
@@ -31,9 +33,9 @@
 <script>
 import { parseTime } from '@/utils'
 import BackToTop from '@/components/BackToTop'
-import vInput from "@/components/MessageBoard/vInput"
-import vList from "@/components/MessageBoard/vList"
-import vTextarea from "@/components/MessageBoard/vTextarea"
+import vInput from '@/components/MessageBoard/vInput'
+import vList from '@/components/MessageBoard/vList'
+import vTextarea from '@/components/MessageBoard/vTextarea'
 export default {
   name: 'detail',
   components: {
@@ -48,13 +50,13 @@ export default {
       message: '',
       details: {
         id: 1,
-        timestamp: new Date(1526262855 * 1000),
+        display_time: new Date(1526262855 * 1000),
         classesLabel: '前端',
         articleType: 0,
         title: '做了一个网页版的串口调试助手',
         content: '最近这两天在研究如何实现web页面和串口间通信，在网上也查了各种资料，electron、nw或者chrome serial，发现对于我来说都太难实现了，一来可用的资料太少，二来安装东西老是出问题，算了还是放弃吧，自己用常用且最熟悉的方式来实现吧，作为一名前端码农，选用的肯定是node作为服务器了，然后网页请求方式用ajax或websocket都可以，实现方式下文都有。',
         pageviews: 23,
-        list:[]
+        list: []
       },
 
       myBackToTopStyle: {
@@ -95,26 +97,73 @@ export default {
     }
   },
   methods: {
-    handleSend: function () {
-      if (this.username === ''){
-        this.$alert('请输入昵称', '提示')
-        return
-      }
-      if (this.message === '') {
-        this.$alert('请输入留言内容', '提示')
-        return
-      }
-      // 数组list存储了所有的留言内容，通过函数给list添加一项留言数据，添加成功后把文本框置空
-      this.list.push({
-        name: this.username,
-        message: this.message
+    getMsg() {
+      const that = this
+      // 详情数据
+      that.request({
+        url: '/messageFront/list',
+        method: 'get',
+        params: { id: that.details.msgid }
+      }).then(function(res) {
+        const resData = res.data
+        if (resData.code === 100) {
+          that.details.list = resData.data
+        } else {
+          that.$notify({
+            title: '提示',
+            message: '未知错误，请稍后再试',
+            type: 'error',
+            duration: 2000
+          })
+          return
+        }
       })
-      this.message = ''
     },
-    handleReply: function (index) {
-      var name = this.list[index].name
+    handleSend: function() {
+      const that = this
+      if (that.username === '') {
+        that.$notify({
+          title: '提示',
+          message: '请输入昵称',
+          type: 'error',
+          duration: 2000
+        })
+        return
+      }
+      if (that.message === '') {
+        that.$notify({
+          title: '提示',
+          message: '请输入留言内容',
+          type: 'error',
+          duration: 2000
+        })
+        return
+      }
+      // 详情数据
+      that.request({
+        url: '/messageFront/update',
+        method: 'post',
+        data: {
+          id: that.details.id,
+          username: that.username,
+          message: that.message
+        }
+      }).then(function(res) {
+        const resData = res.data
+        if (resData.code === 100) {
+          // 数组list存储了所有的留言内容，通过函数给list添加一项留言数据，添加成功后把文本框置空
+          that.getMsg()
+          that.message = ''
+        } else {
+          that.$alert(res.message, '提示')
+          return
+        }
+      })
+    },
+    handleReply: function(index) {
+      var name = this.details.list[index].username
       this.message = '回复@' + name + ':'
-      this.$ref.message.focus()
+      this.$refs.message.focus()
     }
   }
 }
@@ -122,10 +171,16 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .detailMain{
-
+    position: relative;
     text-align: left;
     color: #666;
     padding: 20px 50px;
+  }
+  .backBtn{
+    position: absolute;
+    right: 40px;
+    font-size: 22px;
+    cursor: pointer;
   }
   .listIcon {
     font-size: 18px;
@@ -201,6 +256,9 @@ export default {
     background: #efefef;
     text-align: center;
   }
+  .messageContent{
+    margin-top: 50px;
+  }
   .message {
     display: flex;
     flex-direction: column;
@@ -215,8 +273,9 @@ export default {
     border-radius: 5px;
   }
   .message .btn-con{
-    text-align: center;
+    /*text-align: center;*/
     display: inline-block;
+    padding-left: 200px;
   }
   .message .btn{
     padding: 6px 15px;
@@ -226,5 +285,13 @@ export default {
     background-color: #39f;
     cursor: pointer;
     outline: none;
+  }
+  .messageTit{
+    margin-top: 25px;
+    margin-bottom: 22px;
+    padding-left: 10px;
+    font-size: 16px;
+    border-bottom: 2px solid #dcdcdc;
+    padding: 10px;
   }
 </style>

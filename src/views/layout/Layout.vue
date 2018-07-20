@@ -8,7 +8,7 @@
       <nav class="topNav">
         <navbar></navbar>
       </nav>
-      <app-main  class="jk-main-container"></app-main>
+      <app-main class="jk-main-container"></app-main>
     </el-main>
   </el-container>
 </template>
@@ -55,7 +55,6 @@
   .jk-main{
 
     position: relative;
-    height: fit-content;
     background-color: #efefef;
   }
   .topNav{

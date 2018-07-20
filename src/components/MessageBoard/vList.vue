@@ -5,9 +5,10 @@
         <div class="span-con">
           <span>{{item.username}}:</span>
         </div>
-        <div>
+        <div class="span-msg">
           <div class="list-msg">{{item.message}}</div>
           <div class="list-reply">
+            <span>{{item.time | parseTime('{y}-{m}-{d} {h}:{i}')}}</span> |
             <a @click="listChange(index)">回复</a>
           </div>
         </div>
@@ -18,19 +19,25 @@
 </template>
 
 <script>
+import { parseTime } from '@/utils'
 export default {
   name: 'vList',
   props: {
     list: {
       type: Array,
-      default: ()=> []
+      default: () => []
+    }
+  },
+  filters: {
+    parseTime(filterVal, jsonData) {
+      return parseTime(filterVal, jsonData)
     }
   },
   methods: {
-    listChange: function (index) {
+    listChange: function(index) {
       this.handleReply(index)
     },
-    handleReply: function (index) {
+    handleReply: function(index) {
       this.$emit('reply', index)
     }
   }
@@ -45,14 +52,17 @@ export default {
   display: flex;
   flex-direction: row;
   padding: 10px;
-  border-bottom: 1px solid #e3e8ee;
+  border-bottom: 1px dotted #e3e8ee;
   overflow: hidden;
   flex: 5;
 }
 .span-con{
-  flex: 1;
+  /*flex: 1;*/
   margin-right: 10px;
   color: #39f;
+}
+.span-msg{
+  flex: 1;
 }
 .list-msg{
   flex: 9;
@@ -69,4 +79,7 @@ export default {
   color: #9ea7b4;
   padding: 20px;
 }
+  .list-reply{
+    text-align: right;
+  }
 </style>

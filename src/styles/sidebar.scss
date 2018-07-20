@@ -5,6 +5,11 @@
     transition: margin-left .28s;
     margin-left: 21%;
     margin-top: 0px;
+    height: auto;
+  }
+
+  .aboutPage{
+    position: absolute;
   }
   // 侧边栏
   .jk-aside {
@@ -39,12 +44,16 @@
     z-index: 999;
   }
   .hideSidebar {
+
+    .aboutPage{
+      position: relative;
+    }
     .jk-aside {
       min-width: 0px;
       width: 0px !important;
     }
     .jk-main {
-      //margin-left: 36px;
+      height: fit-content;
       margin-left: 0;
       margin-top: 52px;
     }
