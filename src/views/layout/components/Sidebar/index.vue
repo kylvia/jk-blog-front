@@ -149,10 +149,11 @@ export default {
     color: #999;
   }
   .btContain{
-    position: absolute;
-    bottom: 10%;
+    /*position: absolute;*/
+    /*bottom: 10%;*/
     width: 100%;
     text-align: center;
+    margin-top: 100px;
     .toGit{
       border: 1px solid rgb(252, 100, 35);
       color: rgb(252, 100, 35);
