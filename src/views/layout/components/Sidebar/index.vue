@@ -22,6 +22,9 @@
       <div class="btContain">
         <a target="_blank" href="https://github.com/kylvia" ><el-button class="toGit" size="medium" round>GitHub</el-button></a>
         <div class="email">EMAIL: {{userInfo.email}}</div>
+        <div class="Copyright">Copyright 2018 版权所有
+          <br>
+          <a href="http://www.miitbeian.gov.cn">蜀ICP备18024236号</a></div>
       </div>
     </div>
 
@@ -171,5 +174,10 @@ export default {
   .email{
     color: #333333;
     font-size: 14px;
+  }
+  .Copyright{
+    color: #b2b2b2;
+    font-size: 14px;
+    margin-top: 40px;
   }
 </style>

@@ -24,7 +24,7 @@
       </el-pagination>
     </div>
     <el-tooltip placement="top" content="返回顶部">
-      <back-to-top transitionName="fade" :customStyle="myBackToTopStyle" :visibilityHeight="300" :backPosition="0"></back-to-top>
+      <back-to-top  transitionName="fade" :customStyle="myBackToTopStyle" :visibilityHeight="300" :backPosition="0"></back-to-top>
     </el-tooltip>
   </div>
 </template>

@@ -50,11 +50,11 @@ export default {
   },
   mounted() {
     console.log('mounted')
+    console.log(this.$refs.domName)
     window.addEventListener('scroll', this.handleScroll)
   },
   beforeDestroy() {
     console.log('beforeDestroy')
-    window.removeEventListener('scroll', this.handleScroll)
     if (this.interval) {
       clearInterval(this.interval)
     }
