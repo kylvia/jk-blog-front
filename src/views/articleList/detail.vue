@@ -49,13 +49,13 @@ export default {
       username: '',
       message: '',
       details: {
-        id: 1,
-        display_time: new Date(1526262855 * 1000),
-        classesLabel: '前端',
+        id: '',
+        display_time: '--',
+        classesLabel: '--',
         articleType: 0,
-        title: '做了一个网页版的串口调试助手',
-        content: '最近这两天在研究如何实现web页面和串口间通信，在网上也查了各种资料，electron、nw或者chrome serial，发现对于我来说都太难实现了，一来可用的资料太少，二来安装东西老是出问题，算了还是放弃吧，自己用常用且最熟悉的方式来实现吧，作为一名前端码农，选用的肯定是node作为服务器了，然后网页请求方式用ajax或websocket都可以，实现方式下文都有。',
-        pageviews: 23,
+        title: '--',
+        content: '--',
+        pageviews: '--',
         list: []
       },
 
@@ -234,7 +234,7 @@ export default {
   .contentTxt{
     margin-top: 30px;
     line-height: 1.8em;
-    color: #999999;
+    color: #4d4d4d;
     font-size: 15px;
   }
   .imgContent{

@@ -38,11 +38,11 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
     ))
     if(process.env.npm_config_preview){
       server.start({
-        port: 1993,
+        port: 80,
         directory: './dist',
         file: '/index.html'
       });
-      console.log('> Listening at ' +  'http://localhost:1993' + '\n')
+      console.log('> Listening at ' +  'http://localhost:80' + '\n')
     }
   })
 })

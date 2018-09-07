@@ -49,9 +49,11 @@ export default {
     }
   },
   mounted() {
+    console.log('mounted')
     window.addEventListener('scroll', this.handleScroll)
   },
   beforeDestroy() {
+    console.log('beforeDestroy')
     window.removeEventListener('scroll', this.handleScroll)
     if (this.interval) {
       clearInterval(this.interval)
@@ -59,6 +61,7 @@ export default {
   },
   methods: {
     handleScroll() {
+      console.log(this.visibilityHeight)
       this.visible = window.pageYOffset > this.visibilityHeight
     },
     backToTop() {
