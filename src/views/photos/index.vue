@@ -6,9 +6,6 @@
         <div  class="imgBox">
           <div v-for="(item,index) in items.photos" :key="index" class="imgItem" :class="{'curItem': (item.ind === isActiveNum)}">
             <img :src="item.src" @click="showBigImage(item.src, item.ind)">
-            <div class="image-preview-action">
-              <i @click="rmImage(item._id, item.ind)" class="el-icon-delete"></i>
-            </div>
           </div>
         </div>
       </div>
@@ -179,30 +176,6 @@ export default {
     padding: 5px;
   img{
     max-width: 100%;
-  }
-  .image-preview-action {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    right: -50px;
-    top:  -50px;
-    cursor: default;
-    text-align: center;
-    color: #fff;
-    opacity: 0;
-    font-size: 20px;
-    background-color: rgba(0, 0, 0, .7);
-    transition: opacity .3s;
-    cursor: pointer;
-    text-align: center;
-    line-height: 200px;
-  .el-icon-delete {
-    font-size: 36px;
-    position: absolute;
-    top: 54px;
-    right: 50px;
-  }
   }
   &:hover {
      box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
